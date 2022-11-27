@@ -38,5 +38,20 @@ jobs:
         with:
           context: .
           push: true
-          tags: lembutt/itmo-docker-task-7:$(date +%s)
+          tags: lembutt/itmo-docker-task-7:latest
           labels: ${{ steps.meta.outputs.labels }}
+  deploy:
+    needs: push_to_registry
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: alex-ac/github-action-ssh-docker-compose@master
+      name: Docker-Compose Remote Deployment
+      with:
+        ssh_host: 1044665-cp29323.tw1.ru
+        ssh_private_key: ${{ secrets.SSH_KEY }}
+        ssh_user: ${{ secrets.SSH_USER }}
+        docker_compose_prefix: 1044665_cp29323
+        docker_compose_filename: docker-compose.yml
