@@ -5,7 +5,7 @@ let should = chai.should();
 chai.use(require('chai-http'));
 chai.use(require('chai-match'));
 
-const server = 'http://0.0.0.0:33722';
+const server = 'http://1044665-cp29323.tw1.ru:33722';
 
 describe('Testing API', () => {
   describe('/GET about', () => {
@@ -25,7 +25,8 @@ describe('Testing API', () => {
         .get('/')
         .end((err, res) => {
           res.should.have.status(200);
-          res.text.should.match(/[0-9]*/);
+          console.log('res.text =>>', res.text)
+          res.text.should.match(/^\d+$/);
           done()
         });
     });
@@ -36,7 +37,7 @@ describe('Testing API', () => {
         .get('/stat')
         .end((err, res) => {
           res.should.have.status(200);
-          res.text.should.match(/[0-9]*/);
+          res.text.should.match(/^\d+$/);
           done()
         });
     });
@@ -46,13 +47,13 @@ describe('Testing API', () => {
         .get('/stat')
         .end((err, res) => {
           res.should.have.status(200);
-          res.text.should.match(/[0-9]*/);
+          res.text.should.match(/^\d+$/);
           number = Number(res.text);
           chai.request(server)
             .get('/stat')
             .end((err, res) => {
               res.should.have.status(200);
-              res.text.should.match(/[0-9]*/);
+              res.text.should.match(/^\d+$/);
               let secondNumber = Number(res.text);
               expect(secondNumber).to.be.greaterThan(number);
             });
