@@ -1,0 +1,24 @@
+{
+  "name": "task5",
+  "version": "1.0.0",
+  "description": "```bash\r docker pull lembutt/itmo-docker-task-5:latest\r docker run -p 33722:8080 lembutt/itmo-docker-task-5:latest\r ```",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lembutt/itmo-docker-task-5.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lembutt/itmo-docker-task-5/issues"
+  },
+  "homepage": "https://github.com/Lembutt/itmo-docker-task-5#readme",
+  "dependencies": {
+    "mongodb": "^4.11.0"
+  }
+}
