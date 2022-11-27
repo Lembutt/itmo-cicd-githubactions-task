@@ -5,7 +5,7 @@ let should = chai.should();
 chai.use(require('chai-http'));
 chai.use(require('chai-match'));
 
-const server = 'http://1044665-cp29323.tw1.ru:33722';
+const server = 'http://0.0.0.0:33722';
 
 describe('Testing API', () => {
   describe('/GET about', () => {

@@ -21,12 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: cat index.js
       - uses: isbang/compose-action@v1.4.1
         with:
           compose-file: "./docker-compose.test.yml"
       - run: npm i
-      - run: curl http://0.0.0.0:33722/
       - run: npm run test
   push_to_registry:
     needs: test_build
