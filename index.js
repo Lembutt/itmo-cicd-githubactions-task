@@ -33,7 +33,7 @@ const run = async () => {
                 } else if (req.url == '/about') {
                     // (возвращается html-страничка)
                     res.writeHeader(200, { "Content-Type": "text/html" });
-                    html = '<h3> Hello , Biziarkin Iaroslav</h3>';
+                    html = '<h3> Hello , Biziarkin Iaroslav!</h3>';
                     res.write(html);
                     res.end();
                 } else {
