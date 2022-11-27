@@ -18,8 +18,8 @@ const run = async () => {
                 if (req.url == '/') {
                     // (возвращается текущее значение счётчика, инкремента не происходит);
                     collection.findOne({type: "counter"})
-                        // .then((doc) => res.end(String(doc.value)));
-                        .then((doc) => res.end('asdasdas!!!!!!dasdasdasd'));
+                        .then((doc) => res.end(String(doc.value)));
+                        // .then((doc) => res.end('asdasdas!!!!!!dasdasdasd'));
                 } else if (req.url == '/stat') {
                     // (возвращается текущее значение счётчика, и происходит инкремент);
                     collection.findOne({type: "counter"})
@@ -34,7 +34,7 @@ const run = async () => {
                 } else if (req.url == '/about') {
                     // (возвращается html-страничка)
                     res.writeHeader(200, { "Content-Type": "text/html" });
-                    html = '<h3> Hello , Biziarkin Iaroslav!</h3>';
+                    html = '<h3> Hello , Biziarkin Iaroslav! Changed! </h3>';
                     res.write(html);
                     res.end();
                 } else {
