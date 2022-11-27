@@ -25,6 +25,7 @@ jobs:
       - run: npm i
       - run: npm run test
   push_to_registry:
+    needs: test_build
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
