@@ -3,8 +3,9 @@
 ## Установка и запуск:
 
 ```bash
-git clone -b task7 https://github.com/Lembutt/itmo-docker-task-5.git
-cd itmo-docker-task-5
+git clone https://github.com/Lembutt/itmo-cicd-githubactions-task.git
+cd itmo-cicd-githubactions-task
+docker compose up
 
 ```
 
