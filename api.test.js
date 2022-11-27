@@ -13,10 +13,8 @@ describe('Testing API', () => {
       chai.request(server)
         .get('/about')
         .end((err, res) => {
-          // console.log('res =>> ', res)
           res.should.have.status(200);
           res.should.have.header('content-type', 'text/html');
-          // res.should.be.html;
           done()
         });
     });
