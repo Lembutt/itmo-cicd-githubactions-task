@@ -12,7 +12,9 @@ name: Publish Docker image
 on:
   push:
     branches: ["main"]
-
+env:
+  REMOTE_HOST: 1044665-cp29323.tw1.ru
+  DOCKER_IMAGE_NAME: lembutt/itmo-docker-task-7:latest
 jobs:
   test_build:
     name: Testing New Build
@@ -50,10 +52,22 @@ jobs:
         with:
           context: .
           push: true
-          tags: lembutt/itmo-docker-task-7:latest
+          tags: ${{ env.DOCKER_IMAGE_NAME }}
           labels: ${{ steps.meta.outputs.labels }}
-  deploy:
+  pull_latest_image:
     needs: push_to_registry
+    name: Pulling Latest Docker Image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull Image
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: docker pull ${{ env.DOCKER_IMAGE_NAME }}
+  deploy:
+    needs: pull_latest_image
     runs-on: ubuntu-latest
 
     steps:
@@ -62,7 +76,7 @@ jobs:
     - uses: alex-ac/github-action-ssh-docker-compose@master
       name: Docker-Compose Remote Deployment
       with:
-        ssh_host: 1044665-cp29323.tw1.ru
+        ssh_host: ${{ env.REMOTE_HOST }}
         ssh_private_key: ${{ secrets.SSH_KEY }}
         ssh_user: ${{ secrets.SSH_USER }}
         docker_compose_prefix: 1044665_cp29323
