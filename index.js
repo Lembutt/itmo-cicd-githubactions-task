@@ -19,7 +19,7 @@ const run = async () => {
                     // (возвращается текущее значение счётчика, инкремента не происходит);
                     collection.findOne({type: "counter"})
                         // .then((doc) => res.end(String(doc.value)));
-                        .then((doc) => res.end('asdasdasdasdasdasd'));
+                        .then((doc) => res.end('asdasdas!!!!!!dasdasdasd'));
                 } else if (req.url == '/stat') {
                     // (возвращается текущее значение счётчика, и происходит инкремент);
                     collection.findOne({type: "counter"})
