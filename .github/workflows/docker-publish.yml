@@ -23,6 +23,7 @@ jobs:
         with:
           compose-file: "./docker-compose.test.yml"
       - run: npm i
+      - run: cat index.js
       - run: npm run test
   push_to_registry:
     needs: test_build
