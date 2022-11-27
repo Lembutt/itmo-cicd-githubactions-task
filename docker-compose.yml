@@ -8,7 +8,7 @@ services:
     ports:
       - 27016:27017
   node-app:
-    image: lembutt/itmo-docker-task-7
+    image: lembutt/itmo-docker-task-7:latest
     ports:
       - 33722:8080
     depends_on:
